@@ -19,3 +19,11 @@ export const addPost = action(schema, async (input) => {
 	}
 	return data;
 });
+
+export const getPosts = async () => {
+	const posts = await supabase.from("post").select("*");
+
+	if (!posts) return { error: "No posts found" };
+
+	return { data: posts };
+};

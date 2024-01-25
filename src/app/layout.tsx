@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config";
 import "./globals.css";
+import { Navbar } from "@/views/navbar";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
 	title: siteConfig.title,
@@ -15,7 +17,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="dark bg-black">
-				<main>{children}</main>
+				<Providers>
+					<Navbar />
+					<main className="mx-auto max-w-5xl">{children}</main>
+				</Providers>
 			</body>
 		</html>
 	);
