@@ -1,3 +1,4 @@
+import type { Database } from "@/types/common";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -7,4 +8,4 @@ if (!supabaseUrl || !supabaseApiKey) {
 	throw new Error("Missing API keys for Supabase");
 }
 
-export const supabase = createClient(supabaseUrl, supabaseApiKey);
+export const supabase = createClient<Database>(supabaseUrl, supabaseApiKey);
