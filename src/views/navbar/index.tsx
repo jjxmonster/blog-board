@@ -9,8 +9,12 @@ import {
 import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
+import { NavUserProfile } from "@/components/nav-user-profile";
 
 export const Navbar = () => {
+	const session = useSession();
+	console.log(session);
 	return (
 		<div>
 			<div className="mx-auto flex max-w-5xl justify-between py-10">
@@ -33,22 +37,26 @@ export const Navbar = () => {
 						</Link>
 					</NavigationMenuList>
 				</NavigationMenu>
-				<div className="flex items-center gap-5">
-					<Link href="/api/auth/signin">
-						<Button
-							aria-label="Create Account"
-							className="py-4"
-							variant="default"
-						>
-							Create Account
-						</Button>
-					</Link>
-					<Link aria-label="Sign in" href="/api/auth/signin">
-						<Button className="py-4" variant="default">
-							Login
-						</Button>
-					</Link>
-				</div>
+				{session.data?.user ? (
+					<NavUserProfile user={session.data.user} />
+				) : (
+					<div className="flex items-center gap-5">
+						<Link href="/api/auth/signin">
+							<Button
+								aria-label="Create Account"
+								className="py-4"
+								variant="default"
+							>
+								Create Account
+							</Button>
+						</Link>
+						<Link aria-label="Sign in" href="/signin">
+							<Button className="py-4" variant="default">
+								Login
+							</Button>
+						</Link>
+					</div>
+				)}
 			</div>
 		</div>
 	);
