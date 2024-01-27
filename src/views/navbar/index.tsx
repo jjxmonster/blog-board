@@ -34,12 +34,20 @@ export const Navbar = () => {
 					</NavigationMenuList>
 				</NavigationMenu>
 				<div className="flex items-center gap-5">
-					<Button className="py-4" variant="outline">
-						Create Account
-					</Button>
-					<Button className="py-4" variant="default">
-						Login
-					</Button>
+					<Link href="/api/auth/signin">
+						<Button
+							aria-label="Create Account"
+							className="py-4"
+							variant="default"
+						>
+							Create Account
+						</Button>
+					</Link>
+					<Link aria-label="Sign in" href="/api/auth/signin">
+						<Button className="py-4" variant="default">
+							Login
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</div>

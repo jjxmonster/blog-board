@@ -8,7 +8,7 @@ import { type Adapter } from "next-auth/adapters";
 export const authOptions: NextAuthOptions = {
 	adapter: SupabaseAdapter({
 		url: process.env.SUPABASE_URL as string,
-		secret: process.env.SUPABASE_SECRET as string,
+		secret: process.env.SUPABASE_SERVICE as string,
 	}) as Adapter,
 	providers: [
 		GithubProvider({
