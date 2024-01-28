@@ -27,7 +27,9 @@ export const NavUserProfile = ({ user }: { user: Omit<User, "id"> }) => {
 			<DropdownMenuContent>
 				<DropdownMenuItem>My Posts</DropdownMenuItem>
 				<DropdownMenuItem>
-					<Link href="/post/create">Create Post</Link>
+					<Link className="w-full" href="/post/create">
+						Create Post
+					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem onClick={() => signOut()}>Logout</DropdownMenuItem>
 			</DropdownMenuContent>

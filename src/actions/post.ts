@@ -2,11 +2,11 @@
 
 import { createSafeActionClient } from "next-safe-action";
 import { supabase } from "@/services/supabase";
-import { schema } from "@/lib/schemas";
+import { createFormSchema } from "@/lib/schemas";
 
 export const action = createSafeActionClient();
 
-export const addPost = action(schema, async (input) => {
+export const addPost = action(createFormSchema, async (input) => {
 	const { name, content } = input;
 
 	const { data, error } = await supabase.from("post").insert({

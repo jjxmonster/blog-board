@@ -19,7 +19,7 @@ export default function RootLayout({
 			<body className="dark bg-black">
 				<Providers>
 					<Navbar />
-					<main className="mx-auto max-w-5xl">{children}</main>
+					<main className="mx-auto max-w-5xl pt-20">{children}</main>
 				</Providers>
 			</body>
 		</html>

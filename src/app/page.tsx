@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default async function Home() {
 	return (
-		<div className="flex w-full flex-col items-center justify-center gap-10 py-20">
+		<div className="flex w-full flex-col items-center justify-center gap-10">
 			<h1 className="text-center text-6xl font-bold">
 				Your space to share your passion
 			</h1>
