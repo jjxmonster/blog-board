@@ -8,14 +8,16 @@ import {
 } from "@/components/ui/navigation-menu";
 import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { NavAuth } from "@/components/nav-auth";
 
 export const Navbar = () => {
 	return (
 		<div>
 			<div className="mx-auto flex max-w-5xl justify-between py-10">
 				<div className="flex items-center">
-					<NotepadText size={40} />
+					<Link href="/" passHref>
+						<NotepadText size={40} />
+					</Link>
 				</div>
 				<NavigationMenu className="flex gap-5">
 					<NavigationMenuList>
@@ -33,14 +35,7 @@ export const Navbar = () => {
 						</Link>
 					</NavigationMenuList>
 				</NavigationMenu>
-				<div className="flex items-center gap-5">
-					<Button className="py-4" variant="outline">
-						Create Account
-					</Button>
-					<Button className="py-4" variant="default">
-						Login
-					</Button>
-				</div>
+				<NavAuth />
 			</div>
 		</div>
 	);
