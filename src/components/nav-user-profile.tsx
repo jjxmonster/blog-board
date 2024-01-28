@@ -8,6 +8,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 const default_image = "https://avatars.githubusercontent.com/u/124599?v=4";
 
@@ -25,7 +26,9 @@ export const NavUserProfile = ({ user }: { user: Omit<User, "id"> }) => {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				<DropdownMenuItem>My Posts</DropdownMenuItem>
-				<DropdownMenuItem>New Posts</DropdownMenuItem>
+				<DropdownMenuItem>
+					<Link href="/post/create">Create Post</Link>
+				</DropdownMenuItem>
 				<DropdownMenuItem onClick={() => signOut()}>Logout</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

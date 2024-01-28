@@ -1,8 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { GithubButton } from "@/components/ui/github-button";
 import { Input } from "@/components/ui/input";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
-export default function SignIn() {
+export default async function SignIn() {
+	const session = await getServerSession(authOptions);
+
+	if (session) {
+		redirect("/");
+	}
+
 	return (
 		<section className="flex min-h-full pt-16 sm:py-28">
 			<div className="mx-auto flex w-full max-w-2xl flex-col px-4 sm:px-6">
