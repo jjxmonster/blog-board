@@ -7,11 +7,11 @@ export const MarkdownPreview = ({ content }: { content: string }) => {
 		return { __html: parse(content) };
 	};
 	return (
-		<div className="py-10">
+		<div>
 			<h3 className="text-2xl">Preview</h3>
-			<Card className="mt-5 p-10">
+			<Card className="mt-5 max-h-[500px] overflow-y-scroll p-10">
 				<div
-					className="prose dark:prose-invert overflow-hidden"
+					className="prose overflow-hidden dark:prose-invert"
 					dangerouslySetInnerHTML={createMarkup()}
 				/>
 			</Card>

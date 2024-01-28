@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 export type Json =
 	| string
 	| number
@@ -12,24 +11,35 @@ export interface Database {
 		Tables: {
 			post: {
 				Row: {
+					author_id: string | null;
 					content: string | null;
 					created_at: string;
 					id: number;
-					name: string | null;
+					title: string | null;
 				};
 				Insert: {
+					author_id?: string | null;
 					content?: string | null;
 					created_at?: string;
 					id?: number;
-					name?: string | null;
+					title?: string | null;
 				};
 				Update: {
+					author_id?: string | null;
 					content?: string | null;
 					created_at?: string;
 					id?: number;
-					name?: string | null;
+					title?: string | null;
 				};
-				Relationships: [];
+				Relationships: [
+					{
+						foreignKeyName: "post_author_id_fkey";
+						columns: ["author_id"];
+						isOneToOne: false;
+						referencedRelation: "users";
+						referencedColumns: ["id"];
+					},
+				];
 			};
 		};
 		Views: {
@@ -116,8 +126,8 @@ export type TablesUpdate<
 
 export type Enums<
 	PublicEnumNameOrOptions extends
-		| keyof Database["public"]["Enums"]
-		| { schema: keyof Database },
+		// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+		keyof Database["public"]["Enums"] | { schema: keyof Database },
 	EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
 		? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
 		: never = never,

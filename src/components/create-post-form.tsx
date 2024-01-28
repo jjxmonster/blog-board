@@ -28,7 +28,7 @@ export const CreatePostForm = ({
 			onSubmit={handleSubmit(onSubmit)}
 			className="flex max-w-md flex-col gap-5 py-10"
 		>
-			<Input type="text" {...register("name")} placeholder="Name" />
+			<Input type="text" {...register("title")} placeholder="Title" />
 			<Textarea
 				{...register("content")}
 				className="min-h-[300px]"
@@ -37,7 +37,7 @@ export const CreatePostForm = ({
 
 			<Button disabled={isLoading} type="submit">
 				{isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-				Submit
+				Create
 			</Button>
 			{result.serverError && <p>{result.serverError}</p>}
 		</form>

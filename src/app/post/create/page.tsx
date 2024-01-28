@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { CreatePostFormContainer } from "@/views/create-post-form";
+import { CreatePostFormContainer } from "@/views/create-post-container";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
@@ -11,8 +11,7 @@ export default async function CreatePost() {
 	}
 
 	return (
-		<section className="">
-			<h2 className="text-4xl font-medium">Create Post</h2>
+		<section>
 			<CreatePostFormContainer />
 		</section>
 	);
