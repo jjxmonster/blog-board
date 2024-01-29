@@ -13,7 +13,7 @@ import { NavAuth } from "@/components/nav-auth";
 export const Navbar = () => {
 	return (
 		<div>
-			<div className="mx-auto flex max-w-5xl justify-between py-10">
+			<div className="mx-auto flex max-w-5xl justify-between px-6 py-10 md:px-0">
 				<div className="flex items-center">
 					<Link href="/" passHref>
 						<NotepadText size={40} />

@@ -16,14 +16,9 @@ export const NavAuth = () => {
 		<NavUserProfile user={data.user} />
 	) : (
 		<div className="flex items-center gap-5">
-			<Link href="/api/auth/signin">
-				<Button aria-label="Create Account" className="py-4" variant="default">
-					Create Account
-				</Button>
-			</Link>
 			<Link aria-label="Sign in" href="/signin">
 				<Button className="py-4" variant="default">
-					Login
+					Sign in
 				</Button>
 			</Link>
 		</div>

@@ -16,11 +16,11 @@ export default async function Home() {
 	});
 
 	return (
-		<div className="flex w-full flex-col items-center justify-center gap-10">
+		<section className="flex w-full flex-col items-center justify-center gap-10">
 			<LandingHeader />
 			<HydrationBoundary state={dehydrate(queryClient)}>
 				<LastPosts />
 			</HydrationBoundary>
-		</div>
+		</section>
 	);
 }

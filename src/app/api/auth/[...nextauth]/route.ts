@@ -18,6 +18,7 @@ export const authOptions: NextAuthOptions = {
 	],
 	callbacks: {
 		async session({ session, user }) {
+			console.log(user);
 			const signingSecret = process.env.SUPABASE_JWT_SECRET;
 			if (signingSecret) {
 				const payload = {

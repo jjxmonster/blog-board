@@ -21,7 +21,7 @@ export const CreatePostFormContainer = () => {
 			title: "",
 			content: "",
 		},
-		mode: "onChange",
+		mode: "onBlur",
 	});
 
 	const onSubmit = async (data: CreateFormSchemaType) => {

@@ -15,7 +15,7 @@ export const addPost = action(createFormSchema, async (input) => {
 
 	const { title, content } = input;
 
-	const { data, error } = await supabase.from("post").insert({
+	const { data, error } = await supabase.from("posts").insert({
 		title,
 		content,
 		author_id: session.user.id,
@@ -28,7 +28,9 @@ export const addPost = action(createFormSchema, async (input) => {
 });
 
 export const getPosts = async () => {
-	const posts = await supabase.from("post").select("*");
+	const posts = await supabase
+		.from("posts")
+		.select("id, content, title, users (name)");
 
 	if (!posts) return { error: "No posts found" };
 
