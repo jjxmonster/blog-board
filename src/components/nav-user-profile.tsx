@@ -17,21 +17,23 @@ export const NavUserProfile = ({ user }: { user: Omit<User, "id"> }) => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger className="flex items-center">
+			<DropdownMenuTrigger className="flex items-center gap-2">
 				<Avatar className="my-2">
 					<AvatarImage src={image ?? default_image} alt={`${name} Avatar`} />
 					<AvatarFallback>{`${name} Avatar`}</AvatarFallback>
 				</Avatar>
-				<ChevronDown />
+				<ChevronDown size={15} />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				<DropdownMenuItem>My Posts</DropdownMenuItem>
-				<DropdownMenuItem>
-					<Link className="w-full" href="/post/create">
+				<Link className="w-full" href="/post/create">
+					<DropdownMenuItem className="cursor-pointer">
 						Create Post
-					</Link>
+					</DropdownMenuItem>
+				</Link>
+				<DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
+					Logout
 				</DropdownMenuItem>
-				<DropdownMenuItem onClick={() => signOut()}>Logout</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

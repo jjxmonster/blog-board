@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { NavUserProfile } from "@/components/nav-user-profile";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
+import { GithubButton } from "./ui/github-button";
 
 export const NavAuth = () => {
 	const { status, data } = useSession();
@@ -16,11 +17,7 @@ export const NavAuth = () => {
 		<NavUserProfile user={data.user} />
 	) : (
 		<div className="flex items-center gap-5">
-			<Link aria-label="Sign in" href="/signin">
-				<Button className="py-4" variant="default">
-					Sign in
-				</Button>
-			</Link>
+			<GithubButton />
 		</div>
 	);
 };

@@ -6,16 +6,16 @@ import { signIn } from "next-auth/react";
 export const GithubButton = () => {
 	return (
 		<Button
-			className="text-medium w-full gap-2 py-8"
-			variant="outline"
+			variant="default"
+			className="flex items-center gap-2"
 			onClick={() =>
 				signIn("github", {
 					callbackUrl: "/",
 				})
 			}
 		>
-			<GitHubLogoIcon width={25} height={25} />
-			Continue with Github
+			<GitHubLogoIcon width={15} height={15} />
+			Sign In with Github
 		</Button>
 	);
 };

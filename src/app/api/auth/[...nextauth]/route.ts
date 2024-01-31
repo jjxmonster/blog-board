@@ -17,9 +17,8 @@ export const authOptions: NextAuthOptions = {
 		}),
 	],
 	pages: {
-		signIn: "/signin",
+		signIn: "/",
 	},
-	debug: true,
 	callbacks: {
 		async session({ session, user }) {
 			const signingSecret = process.env.SUPABASE_JWT_SECRET;
