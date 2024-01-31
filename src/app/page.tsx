@@ -1,4 +1,4 @@
-import { getPosts } from "@/actions/post";
+import { getLastPosts } from "@/actions/post";
 import { LandingHeader } from "@/views/landing-header";
 import { LastPosts } from "@/views/last-posts";
 import {
@@ -12,7 +12,7 @@ export default async function Home() {
 
 	await queryClient.prefetchQuery({
 		queryKey: ["landing-posts"],
-		queryFn: getPosts,
+		queryFn: getLastPosts,
 	});
 
 	return (

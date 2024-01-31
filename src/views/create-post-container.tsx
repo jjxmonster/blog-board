@@ -5,8 +5,8 @@ import { useAction } from "next-safe-action/hooks";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addPost } from "@/actions/post";
 
-import { createFormSchema } from "@/lib/schemas";
-import type { CreateFormSchemaType } from "@/types/form";
+import { createPostSchema } from "@/lib/schemas";
+import type { CreatePostSchemaType } from "@/types/form";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { MarkdownPreview } from "@/components/markdown-preview";
@@ -15,8 +15,8 @@ import { CreatePostForm } from "@/components/create-post-form";
 export const CreatePostFormContainer = () => {
 	const { execute, status, result } = useAction(addPost);
 	const isLoading = status === "executing";
-	const form = useForm<CreateFormSchemaType>({
-		resolver: zodResolver(createFormSchema),
+	const form = useForm<CreatePostSchemaType>({
+		resolver: zodResolver(createPostSchema),
 		defaultValues: {
 			title: "",
 			content: "",
@@ -24,7 +24,7 @@ export const CreatePostFormContainer = () => {
 		mode: "onBlur",
 	});
 
-	const onSubmit = async (data: CreateFormSchemaType) => {
+	const onSubmit = async (data: CreatePostSchemaType) => {
 		execute(data);
 		form.reset();
 	};

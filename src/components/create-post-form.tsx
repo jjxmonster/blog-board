@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { type UseFormReturn } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import type { CreateFormSchemaType } from "@/types/form";
+import type { CreatePostSchemaType } from "@/types/form";
 import { Input } from "@/components/ui/input";
 import { type HookResult } from "next-safe-action/hooks";
 import {
@@ -15,12 +15,12 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { createFormItems } from "@/lib/constants";
+import { createPostItems } from "@/lib/constants";
 
 interface CreatePostFormProps {
-	form: UseFormReturn<CreateFormSchemaType>;
+	form: UseFormReturn<CreatePostSchemaType>;
 	isLoading: boolean;
-	onSubmit: (data: CreateFormSchemaType) => void;
+	onSubmit: (data: CreatePostSchemaType) => void;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	result: HookResult<any, null>;
 }
@@ -31,11 +31,12 @@ export const CreatePostForm = ({
 	result,
 	onSubmit,
 }: CreatePostFormProps) => {
-	const { handleSubmit, register } = form;
+	const { handleSubmit } = form;
 
-	const renderFormItems = createFormItems.map(
+	const renderFormItems = createPostItems.map(
 		({ name, label, placeholder, className }) => (
 			<FormField
+				key={name}
 				control={form.control}
 				name={name}
 				render={({ field }) => (
@@ -63,7 +64,7 @@ export const CreatePostForm = ({
 		<Form {...form}>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="flex max-w-md flex-col gap-5 py-10"
+				className="max-w-md space-y-5  py-10"
 			>
 				{renderFormItems}
 

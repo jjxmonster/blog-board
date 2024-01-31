@@ -2,22 +2,23 @@
 
 import { createSafeActionClient } from "next-safe-action";
 import { supabase } from "@/services/supabase";
-import { createFormSchema } from "@/lib/schemas";
+import { createPostSchema } from "@/lib/schemas";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export const action = createSafeActionClient();
 
-export const addPost = action(createFormSchema, async (input) => {
+export const addPost = action(createPostSchema, async (input) => {
 	const session = await getServerSession(authOptions);
 
 	if (!session) throw new Error("No session found");
 
-	const { title, content } = input;
+	const { title, content, description } = input;
 
 	const { data, error } = await supabase.from("posts").insert({
 		title,
 		content,
+		description,
 		author_id: session.user.id,
 	});
 
@@ -27,12 +28,11 @@ export const addPost = action(createFormSchema, async (input) => {
 	return data;
 });
 
-export const getPosts = async () => {
-	const posts = await supabase
+export const getLastPosts = async () => {
+	const response = await supabase
 		.from("posts")
-		.select("id, content, title, users (name)");
+		.select("id, content, title, description, created_at, profiles ( * )")
+		.limit(3);
 
-	if (!posts) return { error: "No posts found" };
-
-	return { data: posts };
+	return response.data;
 };

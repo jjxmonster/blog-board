@@ -8,7 +8,11 @@ export const GithubButton = () => {
 		<Button
 			className="text-medium w-full gap-2 py-8"
 			variant="outline"
-			onClick={() => signIn("github")}
+			onClick={() =>
+				signIn("github", {
+					callbackUrl: "/",
+				})
+			}
 		>
 			<GitHubLogoIcon width={25} height={25} />
 			Continue with Github

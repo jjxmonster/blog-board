@@ -14,6 +14,7 @@ export interface Database {
           author_id: string | null
           content: string | null
           created_at: string
+          description: string | null
           id: number
           title: string | null
         }
@@ -21,6 +22,7 @@ export interface Database {
           author_id?: string | null
           content?: string | null
           created_at?: string
+          description?: string | null
           id?: number
           title?: string | null
         }
@@ -28,6 +30,7 @@ export interface Database {
           author_id?: string | null
           content?: string | null
           created_at?: string
+          description?: string | null
           id?: number
           title?: string | null
         }
@@ -36,6 +39,29 @@ export interface Database {
             foreignKeyName: "posts_author_id_fkey"
             columns: ["author_id"]
             isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      profiles: {
+        Row: {
+          id: string
+          name: string | null
+        }
+        Insert: {
+          id: string
+          name?: string | null
+        }
+        Update: {
+          id?: string
+          name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
             referencedRelation: "users"
             referencedColumns: ["id"]
           }

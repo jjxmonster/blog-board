@@ -1,16 +1,19 @@
-import { Button } from "@/components/ui/button";
+"use client";
 import { GithubButton } from "@/components/ui/github-button";
-import { Input } from "@/components/ui/input";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { useSearchParams } from "next/navigation";
 
-export default async function SignIn() {
-	const session = await getServerSession(authOptions);
+import { toast } from "sonner";
+import { useEffect } from "react";
 
-	if (session) {
-		redirect("/");
-	}
+export default function SignIn() {
+	const { get } = useSearchParams();
+
+	useEffect(() => {
+		if (get("error"))
+			toast.error("An error occurred while trying to sign in.", {
+				id: "signin-error",
+			});
+	}, []);
 
 	return (
 		<section className="flex min-h-full pt-16 sm:py-28">

@@ -1,9 +1,9 @@
-import { getPosts } from "@/actions/post";
+import { getLastPosts } from "@/actions/post";
 import { useQuery } from "@tanstack/react-query";
 
-export const useGetPosts = () => {
+export const useGetLastPosts = () => {
 	return useQuery({
-		queryFn: async () => getPosts(),
+		queryFn: async () => getLastPosts(),
 		queryKey: ["landing-posts"],
 	});
 };

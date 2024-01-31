@@ -1,4 +1,4 @@
-import { type createFormSchema } from "@/lib/schemas";
+import { type createPostSchema } from "@/lib/schemas";
 import type * as z from "zod";
 
-export type CreateFormSchemaType = z.infer<typeof createFormSchema>;
+export type CreatePostSchemaType = z.infer<typeof createPostSchema>;

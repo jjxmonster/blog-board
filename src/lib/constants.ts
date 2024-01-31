@@ -1,7 +1,7 @@
-import { createFormValidationObject } from "./schemas";
+import { type createPostValidationObject } from "./schemas";
 
-export const createFormItems: {
-	name: keyof typeof createFormValidationObject;
+export const createPostItems: {
+	name: keyof typeof createPostValidationObject;
 	type: string;
 	label: string;
 	placeholder: string;

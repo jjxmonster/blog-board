@@ -16,9 +16,12 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: process.env.GITHUB_SECRET as string,
 		}),
 	],
+	pages: {
+		signIn: "/signin",
+	},
+	debug: true,
 	callbacks: {
 		async session({ session, user }) {
-			console.log(user);
 			const signingSecret = process.env.SUPABASE_JWT_SECRET;
 			if (signingSecret) {
 				const payload = {
