@@ -1,18 +1,25 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getCategories } from "@/actions/categories";
+import { useProtectedRoute } from "@/hooks/protected-route";
 import { CreatePostFormContainer } from "@/views/create-post-container";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import {
+	HydrationBoundary,
+	QueryClient,
+	dehydrate,
+} from "@tanstack/react-query";
 
 export default async function CreatePost() {
-	const session = await getServerSession(authOptions);
+	await useProtectedRoute();
+	const queryClient = new QueryClient();
 
-	if (!session) {
-		redirect("/signin?callbackUrl=/post/create");
-	}
-
+	await queryClient.prefetchQuery({
+		queryKey: ["categories"],
+		queryFn: getCategories,
+	});
 	return (
 		<section>
-			<CreatePostFormContainer />
+			<HydrationBoundary state={dehydrate(queryClient)}>
+				<CreatePostFormContainer />
+			</HydrationBoundary>
 		</section>
 	);
 }

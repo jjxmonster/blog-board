@@ -9,9 +9,31 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: number
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          name?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          name?: string
+        }
+        Relationships: []
+      }
       posts: {
         Row: {
           author_id: string | null
+          category_id: number
           content: string | null
           created_at: string
           description: string | null
@@ -20,6 +42,7 @@ export interface Database {
         }
         Insert: {
           author_id?: string | null
+          category_id: number
           content?: string | null
           created_at?: string
           description?: string | null
@@ -28,6 +51,7 @@ export interface Database {
         }
         Update: {
           author_id?: string | null
+          category_id?: number
           content?: string | null
           created_at?: string
           description?: string | null
@@ -40,6 +64,13 @@ export interface Database {
             columns: ["author_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "posts_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
             referencedColumns: ["id"]
           }
         ]

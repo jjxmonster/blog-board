@@ -11,9 +11,13 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { MarkdownPreview } from "@/components/markdown-preview";
 import { CreatePostForm } from "@/components/create-post-form";
+import { useGetCategories } from "@/data/get-posts";
+import { redirect } from "next/navigation";
 
 export const CreatePostFormContainer = () => {
 	const { execute, status, result } = useAction(addPost);
+	const { data: categories } = useGetCategories();
+
 	const isLoading = status === "executing";
 	const form = useForm<CreatePostSchemaType>({
 		resolver: zodResolver(createPostSchema),
@@ -25,7 +29,9 @@ export const CreatePostFormContainer = () => {
 	});
 
 	const onSubmit = async (data: CreatePostSchemaType) => {
-		execute(data);
+		const category = categories?.find(({ id }) => String(id) === data.category)
+			?.id as number;
+		execute({ ...data, category });
 		form.reset();
 	};
 
@@ -35,11 +41,16 @@ export const CreatePostFormContainer = () => {
 		}
 	}, [status]);
 
+	if (!categories) {
+		redirect("/");
+	}
+
 	return (
 		<div className="grid grid-cols-2">
 			<div>
 				<h2 className="text-4xl font-medium">Create Post</h2>
 				<CreatePostForm
+					categories={categories}
 					result={result}
 					onSubmit={onSubmit}
 					form={form}

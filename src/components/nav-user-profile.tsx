@@ -31,6 +31,11 @@ export const NavUserProfile = ({ user }: { user: Omit<User, "id"> }) => {
 						Create Post
 					</DropdownMenuItem>
 				</Link>
+				<Link className="w-full" href="/categories/create">
+					<DropdownMenuItem className="cursor-pointer">
+						Create Category
+					</DropdownMenuItem>
+				</Link>
 				<DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
 					Logout
 				</DropdownMenuItem>
