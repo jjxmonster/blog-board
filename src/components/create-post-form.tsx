@@ -83,7 +83,10 @@ export const CreatePostForm = ({
 							<SelectContent>
 								<SelectGroup>
 									{categories.map((category) => (
-										<SelectItem key={category.id} value={String(category.id)}>
+										<SelectItem
+											key={category.id}
+											value={category.id.toString()}
+										>
 											{category.name}
 										</SelectItem>
 									))}

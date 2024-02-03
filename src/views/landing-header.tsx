@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export const LandingHeader = () => {
 	return (
 		<>
-			<h1 className="text-center text-6xl font-bold">
+			<h1 className="text-center text-5xl font-bold md:text-6xl">
 				Your space to share your passion
 			</h1>
 			<div className="flex gap-5">

@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { MarkdownPreview } from "@/components/markdown-preview";
 import { CreatePostForm } from "@/components/create-post-form";
-import { useGetCategories } from "@/data/get-posts";
+import { useGetCategories } from "@/data/get-categories";
 import { redirect } from "next/navigation";
 
 export const CreatePostFormContainer = () => {
@@ -29,9 +29,7 @@ export const CreatePostFormContainer = () => {
 	});
 
 	const onSubmit = async (data: CreatePostSchemaType) => {
-		const category = categories?.find(({ id }) => String(id) === data.category)
-			?.id as number;
-		execute({ ...data, category });
+		execute(data);
 		form.reset();
 	};
 

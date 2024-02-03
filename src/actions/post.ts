@@ -21,7 +21,7 @@ export const addPost = action(createPostSchema, async (input) => {
 		content,
 		description,
 		author_id: session.user.id,
-		category_id: category,
+		category_id: Number(category),
 	});
 
 	if (error) {
