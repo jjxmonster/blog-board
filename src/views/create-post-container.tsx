@@ -44,9 +44,9 @@ export const CreatePostFormContainer = () => {
 	}
 
 	return (
-		<div className="grid grid-cols-2">
+		<div className="grid grid-cols-1 md:grid-cols-2">
 			<div>
-				<h2 className="text-4xl font-medium">Create Post</h2>
+				<h1 className="text-4xl font-medium">Create Post</h1>
 				<CreatePostForm
 					categories={categories}
 					result={result}

@@ -21,7 +21,9 @@ export default function RootLayout({
 				<Toaster richColors position="top-center" />
 				<Providers>
 					<Navbar />
-					<main className="mx-auto max-w-5xl pt-20">{children}</main>
+					<main className="mx-auto max-w-5xl px-6 pt-20 md:px-0">
+						{children}
+					</main>
 				</Providers>
 			</body>
 		</html>

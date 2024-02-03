@@ -27,7 +27,24 @@ export const addCategory = action(createCategorySchema, async (input) => {
 });
 
 export const getCategories = async () => {
-	const response = await supabase.from("categories").select("*");
+	const { data, error } = await supabase
+		.from("categories")
+		.select("*, posts(id)");
 
-	return response.data;
+	if (error) {
+		throw error;
+	}
+	return data;
+};
+
+export const getDataForCategoryPage = async (slug: string) => {
+	const { data, error } = await supabase
+		.from("categories")
+		.select("*, posts(*, profiles( * ))")
+		.eq("slug", slug);
+
+	if (error) {
+		throw error;
+	}
+	return data;
 };

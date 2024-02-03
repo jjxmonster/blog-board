@@ -26,12 +26,12 @@ export const NavUserProfile = ({ user }: { user: Omit<User, "id"> }) => {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				<DropdownMenuItem>My Posts</DropdownMenuItem>
-				<Link className="w-full" href="/post/create">
+				<Link className="w-full" href="/create-post">
 					<DropdownMenuItem className="cursor-pointer">
 						Create Post
 					</DropdownMenuItem>
 				</Link>
-				<Link className="w-full" href="/categories/create">
+				<Link className="w-full" href="/create-category">
 					<DropdownMenuItem className="cursor-pointer">
 						Create Category
 					</DropdownMenuItem>

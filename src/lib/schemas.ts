@@ -21,9 +21,14 @@ export const createPostValidationObject = {
 export const createPostSchema = z.object(createPostValidationObject);
 
 export const createCategoryValidationObject = {
-	name: z.string().min(5, {
-		message: "Name must be at least 3 characters.",
-	}),
+	name: z
+		.string()
+		.min(5, {
+			message: "Name must be at least 3 characters.",
+		})
+		.max(30, {
+			message: "Name must be at most 30 characters.",
+		}),
 	description: z
 		.string()
 		.min(5, {

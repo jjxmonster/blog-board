@@ -15,18 +15,21 @@ export interface Database {
           description: string | null
           id: number
           name: string
+          slug: string
         }
         Insert: {
           created_at?: string
           description?: string | null
           id?: number
           name?: string
+          slug?: string
         }
         Update: {
           created_at?: string
           description?: string | null
           id?: number
           name?: string
+          slug?: string
         }
         Relationships: []
       }
@@ -38,6 +41,7 @@ export interface Database {
           created_at: string
           description: string | null
           id: number
+          slug: string
           title: string | null
         }
         Insert: {
@@ -47,6 +51,7 @@ export interface Database {
           created_at?: string
           description?: string | null
           id?: number
+          slug?: string
           title?: string | null
         }
         Update: {
@@ -56,6 +61,7 @@ export interface Database {
           created_at?: string
           description?: string | null
           id?: number
+          slug?: string
           title?: string | null
         }
         Relationships: [

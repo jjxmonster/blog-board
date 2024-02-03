@@ -37,7 +37,7 @@ export const CreateCategoryFormContainer = () => {
 	return (
 		<div className="grid grid-cols-2">
 			<div>
-				<h2 className="text-4xl font-medium">Create Category</h2>
+				<h1 className="text-4xl font-medium">Create Category</h1>
 				<CreateCategoryForm
 					result={result}
 					onSubmit={onSubmit}
