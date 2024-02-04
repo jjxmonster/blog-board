@@ -1,8 +1,8 @@
 import { CategoryCard } from "@/components/category-card";
-import { type Category } from "@/types/common";
+import { type PostRelation, type Category } from "@/types/common";
 
 interface CategoriesListProps {
-	categories: Category[];
+	categories: Category<PostRelation>[];
 }
 
 export const CategoriesList = ({ categories }: CategoriesListProps) => {

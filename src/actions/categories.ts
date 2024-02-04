@@ -4,7 +4,8 @@ import { createSafeActionClient } from "next-safe-action";
 import { supabase } from "@/services/supabase";
 import { createCategorySchema } from "@/lib/schemas";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth-config";
+import type { Category, PostRelation } from "@/types/common";
 
 export const action = createSafeActionClient();
 
@@ -34,7 +35,7 @@ export const getCategories = async () => {
 	if (error) {
 		throw error;
 	}
-	return data;
+	return data as Category<PostRelation>[];
 };
 
 export const getDataForCategoryPage = async (slug: string) => {

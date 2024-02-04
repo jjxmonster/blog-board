@@ -4,9 +4,9 @@ import { createSafeActionClient } from "next-safe-action";
 import { supabase } from "@/services/supabase";
 import { createPostSchema } from "@/lib/schemas";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import type { CategoryRelation, ProfilesRelation, Post } from "@/types/common";
 import slugify from "voca/slugify";
+import { authOptions } from "@/lib/auth-config";
 
 export const action = createSafeActionClient();
 

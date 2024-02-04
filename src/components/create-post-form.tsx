@@ -37,7 +37,7 @@ interface CreatePostFormProps {
 	onSubmit: (data: CreatePostSchemaType) => void;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	result: HookResult<any, null>;
-	categories: Category[];
+	categories: Category<{}>[];
 }
 
 export const CreatePostForm = ({

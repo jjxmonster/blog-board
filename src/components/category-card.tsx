@@ -5,12 +5,12 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { type Category } from "@/types/common";
+import { type PostRelation, type Category } from "@/types/common";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
 
 interface CategoryCardProps {
-	category: Category;
+	category: Category<PostRelation>;
 }
 
 export const CategoryCard = ({ category }: CategoryCardProps) => {
