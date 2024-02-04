@@ -37,7 +37,7 @@ export interface Database {
         Row: {
           author_id: string | null
           category_id: number
-          content: string | null
+          content: string
           created_at: string
           description: string | null
           id: number
@@ -47,7 +47,7 @@ export interface Database {
         Insert: {
           author_id?: string | null
           category_id: number
-          content?: string | null
+          content: string
           created_at?: string
           description?: string | null
           id?: number
@@ -57,7 +57,7 @@ export interface Database {
         Update: {
           author_id?: string | null
           category_id?: number
-          content?: string | null
+          content?: string
           created_at?: string
           description?: string | null
           id?: number

@@ -1,13 +1,14 @@
 import { PostCard } from "@/components/post-card";
 import { Badge } from "@/components/ui/badge";
-import { type ExtendedCategory } from "@/types/common";
+import type { Category, PostRelation } from "@/types/common";
 
 interface CategoryPageViewProps {
-	data: ExtendedCategory;
+	data: Category<PostRelation>;
 }
 export const CategoryPageView = ({ data }: CategoryPageViewProps) => {
 	const { posts, ...category } = data;
 	const { name, description } = category;
+
 	return (
 		<section>
 			<div className="mb-10 space-y-3">
