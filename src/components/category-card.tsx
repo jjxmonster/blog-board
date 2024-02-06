@@ -16,7 +16,7 @@ interface CategoryCardProps {
 export const CategoryCard = ({ category }: CategoryCardProps) => {
 	const { name, description, slug, posts } = category;
 	return (
-		<Card>
+		<Card className="h-full">
 			<Link href={`/category/${slug}`}>
 				<CardHeader>
 					<CardTitle>{name}</CardTitle>

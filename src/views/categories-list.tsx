@@ -7,10 +7,10 @@ interface CategoriesListProps {
 
 export const CategoriesList = ({ categories }: CategoriesListProps) => {
 	return (
-		<ul className="grid grid-cols-3">
+		<ul className="grid grid-cols-3 gap-4">
 			{categories.map((category) => {
 				return (
-					<li key={category.id}>
+					<li key={category.id} className="h-full">
 						<CategoryCard category={category} />
 					</li>
 				);

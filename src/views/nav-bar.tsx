@@ -21,13 +21,6 @@ export const Navbar = () => {
 				</div>
 				<NavigationMenu className="flex gap-5">
 					<NavigationMenuList>
-						<Link href="/browse" legacyBehavior passHref>
-							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-								Browse
-							</NavigationMenuLink>
-						</Link>
-					</NavigationMenuList>
-					<NavigationMenuList>
 						<Link href="/categories" legacyBehavior passHref>
 							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
 								Categories
