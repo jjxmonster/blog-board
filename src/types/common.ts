@@ -16,3 +16,4 @@ export interface ExtendedPostRelation {
 export type User = Database["public"]["Tables"]["profiles"]["Row"];
 export type Post<T> = Database["public"]["Tables"]["posts"]["Row"] & T;
 export type Category<T> = Database["public"]["Tables"]["categories"]["Row"] & T;
+export type Comment<T> = Database["public"]["Tables"]["comments"]["Row"] & T;

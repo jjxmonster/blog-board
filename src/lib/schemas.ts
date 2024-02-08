@@ -40,3 +40,15 @@ export const createCategoryValidationObject = {
 } as const;
 
 export const createCategorySchema = z.object(createCategoryValidationObject);
+
+export const addCommentSchema = z.object({
+	content: z
+		.string()
+		.min(5, {
+			message: "Comment must be at least 5 characters.",
+		})
+		.max(160, {
+			message: "Comment must not be longer than 30 characters.",
+		}),
+	post_id: z.number().optional(),
+});

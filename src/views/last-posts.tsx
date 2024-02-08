@@ -1,11 +1,11 @@
-"use client";
-
 import { PostCard } from "@/components/post-card";
-import { useGetLastPosts } from "@/data/get-posts";
+import type { CategoryRelation, Post, ProfilesRelation } from "@/types/common";
 
-export const LastPosts = () => {
-	const { data: posts } = useGetLastPosts();
+interface LastPostsProps {
+	posts: Post<CategoryRelation & ProfilesRelation>[];
+}
 
+export const LastPosts = ({ posts }: LastPostsProps) => {
 	if (!posts) return null;
 
 	return (

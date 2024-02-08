@@ -7,7 +7,7 @@ interface CategoriesListProps {
 
 export const CategoriesList = ({ categories }: CategoriesListProps) => {
 	return (
-		<ul className="grid grid-cols-3 gap-4">
+		<ul className="grid  gap-4 md:grid-cols-3">
 			{categories.map((category) => {
 				return (
 					<li key={category.id} className="h-full">

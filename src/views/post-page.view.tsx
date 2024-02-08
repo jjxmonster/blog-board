@@ -3,16 +3,21 @@ import { parseDate } from "@/lib/utils";
 import type { CategoryRelation, Post, ProfilesRelation } from "@/types/common";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { CommentsContainer } from "./comments-container";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth-config";
 
 interface PostPageViewProps {
 	post: Post<CategoryRelation & ProfilesRelation>;
 }
 
-export const PostPageView = ({ post }: PostPageViewProps) => {
+export const PostPageView = async ({ post }: PostPageViewProps) => {
+	const session = await getServerSession(authOptions);
+
 	const { title, profiles, created_at, categories, content } = post;
 	return (
-		<section className="mb-20 max-w-4xl">
-			<div className="mb-10 space-y-3">
+		<section className="mx-auto mb-20 max-w-4xl px-6">
+			<div className="mb-10 flex flex-col items-center space-y-3">
 				<h1 className="text-5xl font-medium">{title}</h1>
 				<div className="flex space-x-2 py-3 text-sm text-gray-400">
 					<Link href="/">{profiles?.name}</Link>
@@ -27,6 +32,7 @@ export const PostPageView = ({ post }: PostPageViewProps) => {
 			<article className="prose prose-invert max-w-none">
 				<MDXRemote source={content} />
 			</article>
+			{session && <CommentsContainer id={post.id} />}
 		</section>
 	);
 };
