@@ -10,11 +10,9 @@ export const action = createSafeActionClient();
 
 export const addComment = action(addCommentSchema, async (input) => {
 	const session = await getServerSession(authOptions);
-
 	if (!session) throw new Error("No session found");
 
 	const { content } = input;
-
 	const { data, error } = await supabase.from("comments").insert({
 		content,
 		author_id: session.user.id,

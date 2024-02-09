@@ -6,16 +6,15 @@ import { createCategorySchema } from "@/lib/schemas";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth-config";
 import type { Category, PostRelation } from "@/types/common";
+import { revalidatePath } from "next/cache";
 
 export const action = createSafeActionClient();
 
 export const addCategory = action(createCategorySchema, async (input) => {
 	const session = await getServerSession(authOptions);
-
 	if (!session) throw new Error("No session found");
 
 	const { name, description } = input;
-
 	const { data, error } = await supabase.from("categories").insert({
 		name,
 		description,
@@ -24,6 +23,8 @@ export const addCategory = action(createCategorySchema, async (input) => {
 	if (error) {
 		throw error;
 	}
+
+	revalidatePath("/categories");
 	return data;
 });
 

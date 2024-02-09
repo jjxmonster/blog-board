@@ -7,15 +7,15 @@ import { getServerSession } from "next-auth";
 import type { CategoryRelation, ProfilesRelation, Post } from "@/types/common";
 import slugify from "voca/slugify";
 import { authOptions } from "@/lib/auth-config";
+import { revalidatePath } from "next/cache";
 
 export const action = createSafeActionClient();
 
 export const addPost = action(createPostSchema, async (input) => {
 	const session = await getServerSession(authOptions);
-
 	if (!session) throw new Error("No session found");
-	const { title, content, description, category } = input;
 
+	const { title, content, description, category, category_slug } = input;
 	const { data, error } = await supabase.from("posts").insert({
 		title,
 		content,
@@ -24,10 +24,12 @@ export const addPost = action(createPostSchema, async (input) => {
 		category_id: Number(category),
 		slug: slugify(title),
 	});
-
 	if (error) {
 		throw error;
 	}
+
+	revalidatePath(`/category/${category_slug}`);
+	revalidatePath("/categories");
 	return data;
 });
 

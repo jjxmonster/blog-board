@@ -6,6 +6,10 @@ Simple blogging application designed for users to create, manage, and share thei
 
 This blogging platform offers an interactive space for users to share his knowledge and tips. Users can comment on posts, create their own posts and also create new categories
 
+## Live Demo
+
+Check out the live demo of the application: [Live Demo](https://blog-board.vercel.app/)
+
 ## Tech Stack
 
 - Next.js
@@ -16,16 +20,14 @@ This blogging platform offers an interactive space for users to share his knowle
 - React Hook Form
 - Next Safe Action
 - Sonner
-
-## Live Demo
-
-Check out the live demo of the application: [Live Demo](https://blog-board.vercel.app/)
+- MDXRemote
 
 ## Features
 
 - Login with Github
 - Authentication using Next Auth with Supabase Adapter
 - Creating posts
+- Post Preview
 - Creating categories
 - Adding comments
 - Protected Routes

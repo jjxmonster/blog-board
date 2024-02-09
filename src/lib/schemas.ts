@@ -4,6 +4,7 @@ export const createPostValidationObject = {
 	title: z.string().min(5, {
 		message: "Title must be at least 5 characters.",
 	}),
+	category_slug: z.string().optional(),
 	category: z.string(),
 	description: z
 		.string()

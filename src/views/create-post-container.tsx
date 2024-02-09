@@ -24,12 +24,21 @@ export const CreatePostFormContainer = () => {
 		defaultValues: {
 			title: "",
 			content: "",
+			description: "",
+			category_slug: "",
 		},
 		mode: "onBlur",
 	});
 
 	const onSubmit = async (data: CreatePostSchemaType) => {
-		execute(data);
+		const category_slug = categories?.find(
+			(category) => category.id === Number(data.category),
+		)?.slug;
+
+		execute({
+			...data,
+			category_slug,
+		});
 		form.reset();
 	};
 
@@ -44,7 +53,7 @@ export const CreatePostFormContainer = () => {
 	}
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2">
+		<div className="grid grid-cols-1 px-6 md:grid-cols-2">
 			<div>
 				<h1 className="text-4xl font-medium">Create Post</h1>
 				<CreatePostForm

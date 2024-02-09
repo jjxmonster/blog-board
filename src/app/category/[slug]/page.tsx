@@ -2,7 +2,7 @@ import { getCategories, getDataForCategoryPage } from "@/actions/categories";
 import { CategoryPageView } from "@/views/category-page";
 import { notFound } from "next/navigation";
 
-export const revalidate = 5000;
+export const revalidate = 3600;
 export const generateStaticParams = async () => {
 	const categories = await getCategories();
 
