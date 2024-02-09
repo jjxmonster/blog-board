@@ -46,17 +46,17 @@ Check out the live demo of the application: [Live Demo](https://blog-board.verce
 
 ## Screenshots
 
-### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-1.png&w=1080&q=75)
+### ![home](https://www.tarabasz.dev/_next/image?url=%2Fimages%2Fblog-baord-1.png&w=1920&q=75)
 
-### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-2.png&w=1080&q=75)
+### ![home](https://www.tarabasz.dev/_next/image?url=%2Fimages%2Fblog-baord-2.png&w=1920&q=75)
 
-### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-3.png&w=1080&q=75)
+### ![home](https://www.tarabasz.dev/_next/image?url=%2Fimages%2Fblog-baord-3.png&w=1920&q=75)
 
-### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-4.png&w=1080&q=75)
+### ![home](https://www.tarabasz.dev/_next/image?url=%2Fimages%2Fblog-baord-4.png&w=1920&q=75)
 
-### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-5.png&w=1080&q=75)
+### ![home](https://www.tarabasz.dev/_next/image?url=%2Fimages%2Fblog-baord-5.png&w=1920&q=75)
 
-### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-7.png&w=1080&q=75)
+### ![home](https://www.tarabasz.dev/_next/image?url=%2Fimages%2Fblog-board-7.png&w=1920&q=75)
 
 ## Environment Variables (`.env.local`)
 
