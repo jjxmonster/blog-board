@@ -1,5 +1,3 @@
-# Blog Board
-
 Simple blogging application designed for users to create, manage, and share their own blog posts.
 
 ## Brief Description
@@ -44,10 +42,21 @@ Check out the live demo of the application: [Live Demo](https://blog-board.verce
 - Using Hydration Boundary for prefetched queries
 - Using Server Actions with Next Safe Action
 - Creating a Trigger in Supabase PostgreSQL Database
+- Generating Database Type using Supabase CLI
 
 ## Screenshots
 
-# SOON
+### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-1.png&w=1080&q=75)
+
+### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-2.png&w=1080&q=75)
+
+### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-3.png&w=1080&q=75)
+
+### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-4.png&w=1080&q=75)
+
+### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-5.png&w=1080&q=75)
+
+### ![home](https://www.tarabasz.dev/_next/image?url=/img/blog-board-7.png&w=1080&q=75)
 
 ## Environment Variables (`.env.local`)
 
