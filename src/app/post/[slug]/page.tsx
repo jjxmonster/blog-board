@@ -1,17 +1,6 @@
-import { getAllPosts, getPostBySlug } from "@/actions/post";
+import { getPostBySlug } from "@/actions/post";
 import { PostPageView } from "@/views/post-page.view";
 import { notFound } from "next/navigation";
-
-export const revalidate = 3600;
-export const generateStaticParams = async () => {
-	const posts = await getAllPosts();
-
-	return posts.map((post) => ({
-		params: {
-			slug: post.slug,
-		},
-	}));
-};
 
 export default async function CategoryPage({
 	params: { slug },
