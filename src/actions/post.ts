@@ -56,6 +56,18 @@ export const getAllPosts = async () => {
 	return data as Post<{}>[];
 };
 
+export const getPostsByUserID = async (id: string) => {
+	const { data, error } = await supabase
+		.from("posts")
+		.select("*, profiles ( * ), categories( * )")
+		.eq("author_id", id);
+
+	if (error) {
+		throw error;
+	}
+	return data as Post<CategoryRelation & ProfilesRelation>[];
+};
+
 export const getPostBySlug = async (slug: string) => {
 	const { data, error } = await supabase
 		.from("posts")
@@ -70,3 +82,29 @@ export const getPostBySlug = async (slug: string) => {
 	}
 	return data as Post<CategoryRelation & ProfilesRelation>;
 };
+
+export const deletePost = async (id: string) => {
+	const { error } = await supabase.from("posts").delete().eq("id", id);
+
+	if (error) {
+		throw error;
+	}
+	return;
+};
+
+export const editPost = action(createPostSchema, async (_input) => {
+	// const {  title, content, description, category } = input;
+	// const { data, error } = await supabase
+	// 	.from("posts")
+	// 	.update({
+	// 		title,
+	// 		content,
+	// 		description,
+	// 		category_id: Number(category),
+	// 	})
+	// 	.eq("id", id);
+	// if (error) {
+	// 	throw error;
+	// }
+	// return data;
+});

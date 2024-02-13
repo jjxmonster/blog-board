@@ -4,16 +4,12 @@ import type { CategoryRelation, Post, ProfilesRelation } from "@/types/common";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CommentsContainer } from "./comments-container";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth-config";
 
 interface PostPageViewProps {
 	post: Post<CategoryRelation & ProfilesRelation>;
 }
 
 export const PostPageView = async ({ post }: PostPageViewProps) => {
-	const session = await getServerSession(authOptions);
-
 	const { title, profiles, created_at, categories, content } = post;
 	return (
 		<section className="mx-auto mb-20 max-w-4xl px-6">
@@ -32,7 +28,7 @@ export const PostPageView = async ({ post }: PostPageViewProps) => {
 			<article className="prose prose-invert max-w-none">
 				<MDXRemote source={content} />
 			</article>
-			{session && <CommentsContainer id={post.id} />}
+			<CommentsContainer id={post.id} />
 		</section>
 	);
 };

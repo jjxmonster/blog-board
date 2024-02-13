@@ -25,7 +25,12 @@ export const NavUserProfile = ({ user }: { user: Omit<User, "id"> }) => {
 				<ChevronDown size={15} />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
-				<DropdownMenuItem>My Posts</DropdownMenuItem>
+				<Link className="w-full" href="/my-posts">
+					<DropdownMenuItem className="cursor-pointer">
+						My Posts
+					</DropdownMenuItem>
+				</Link>
+
 				<Link className="w-full" href="/create-post">
 					<DropdownMenuItem className="cursor-pointer">
 						Create Post

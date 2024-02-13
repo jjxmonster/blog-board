@@ -9,12 +9,14 @@ import { parseDate } from "@/lib/utils";
 import type { CategoryRelation, Post, ProfilesRelation } from "@/types/common";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface PostCardProps {
 	post: Post<CategoryRelation & ProfilesRelation>;
+	showActions?: boolean;
 }
 
-export const PostCard = ({ post }: PostCardProps) => {
+export const PostCard = ({ post, showActions = false }: PostCardProps) => {
 	const { title, description, created_at, profiles, categories, slug } = post;
 	return (
 		<Card className="cursor-pointer">
@@ -26,10 +28,23 @@ export const PostCard = ({ post }: PostCardProps) => {
 					<CardTitle>{title}</CardTitle>
 					<CardDescription>{description}</CardDescription>
 				</CardHeader>
-				<CardFooter>
+				<CardFooter className="flex flex-col items-start">
 					<p className="flex gap-1 text-sm text-gray-500">
 						<span>{profiles?.name}</span>/<span>{parseDate(created_at)}</span>
 					</p>
+					{showActions && (
+						<div
+							onClick={(e) => e.preventDefault()}
+							className="mt-5 flex w-full justify-between"
+						>
+							<Button size="sm" variant="destructive">
+								Delete
+							</Button>
+							<Button size="sm" variant="default">
+								Edit
+							</Button>
+						</div>
+					)}
 				</CardFooter>
 			</Link>
 		</Card>
