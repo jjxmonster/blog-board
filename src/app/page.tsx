@@ -6,7 +6,7 @@ export default async function Home() {
 	const posts = await getLastPosts();
 
 	return (
-		<section className="flex w-full flex-col items-center justify-center gap-10 px-6">
+		<section className="flex w-full flex-col items-center justify-center gap-10">
 			<LandingHeader />
 			<LastPosts posts={posts} />
 		</section>

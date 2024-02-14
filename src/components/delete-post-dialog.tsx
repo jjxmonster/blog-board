@@ -40,19 +40,21 @@ export const DeletePostDialog = ({ postId }: DeletePostDialogProps) => {
 				</AlertDialogHeader>
 				<AlertDialogFooter>
 					<AlertDialogCancel>Cancel</AlertDialogCancel>
-					<form>
-						<AlertDialogAction
-							type="submit"
-							formAction={() => {
-								startTransition(async () => {
-									await deletePost(postId);
-									toast.success("Post deleted successfully");
-								});
-							}}
-						>
-							Continue
-						</AlertDialogAction>
-					</form>
+					<AlertDialogAction asChild>
+						<form>
+							<Button
+								type="submit"
+								formAction={() => {
+									startTransition(async () => {
+										await deletePost(postId);
+										toast.success("Post deleted successfully");
+									});
+								}}
+							>
+								Continue
+							</Button>
+						</form>
+					</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>
