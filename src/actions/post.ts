@@ -83,13 +83,14 @@ export const getPostBySlug = async (slug: string) => {
 	return data as Post<CategoryRelation & ProfilesRelation>;
 };
 
-export const deletePost = async (id: string) => {
+export const deletePost = async (id: number) => {
 	const { error } = await supabase.from("posts").delete().eq("id", id);
-
+	console.log("DELETE");
 	if (error) {
+		console.log(error);
 		throw error;
 	}
-	return;
+	revalidatePath("/my-posts");
 };
 
 export const editPost = action(createPostSchema, async (_input) => {
