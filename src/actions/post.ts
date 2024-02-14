@@ -85,11 +85,11 @@ export const getPostBySlug = async (slug: string) => {
 
 export const deletePost = async (id: number) => {
 	const { error } = await supabase.from("posts").delete().eq("id", id);
-	console.log("DELETE");
+
 	if (error) {
-		console.log(error);
 		throw error;
 	}
+
 	revalidatePath("/my-posts");
 };
 
