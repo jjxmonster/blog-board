@@ -18,7 +18,8 @@ interface PostCardProps {
 }
 
 export const PostCard = ({ post, showActions = false }: PostCardProps) => {
-	const { title, description, created_at, profiles, categories, slug } = post;
+	const { title, description, created_at, profiles, categories, slug, id } =
+		post;
 	return (
 		<Card className="cursor-pointer">
 			<Link href={`/post/${slug}`}>
@@ -38,7 +39,7 @@ export const PostCard = ({ post, showActions = false }: PostCardProps) => {
 					<div className="mt-5 flex w-full justify-between">
 						<DeletePostDialog postId={post.id} />
 						<Button size="sm" variant="default">
-							Edit
+							<Link href={`/edit-post/${id}`}>Edit</Link>
 						</Button>
 					</div>
 				)}

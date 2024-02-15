@@ -38,6 +38,7 @@ interface CreatePostFormProps {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	result: HookResult<any, null>;
 	categories: Category<{}>[];
+	isEdit?: boolean;
 }
 
 export const CreatePostForm = ({
@@ -46,6 +47,7 @@ export const CreatePostForm = ({
 	result,
 	onSubmit,
 	categories,
+	isEdit = false,
 }: CreatePostFormProps) => {
 	const { handleSubmit } = form;
 
@@ -133,7 +135,7 @@ export const CreatePostForm = ({
 				{renderFormItems}
 				<Button disabled={isLoading} type="submit">
 					{isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-					Create
+					{isEdit ? "Save" : "Create"}
 				</Button>
 				{result.serverError && <p className="text-red">{result.serverError}</p>}
 			</form>

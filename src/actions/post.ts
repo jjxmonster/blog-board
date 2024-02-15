@@ -93,19 +93,34 @@ export const deletePost = async (id: number) => {
 	revalidatePath("/my-posts");
 };
 
-export const editPost = action(createPostSchema, async (_input) => {
-	// const {  title, content, description, category } = input;
-	// const { data, error } = await supabase
-	// 	.from("posts")
-	// 	.update({
-	// 		title,
-	// 		content,
-	// 		description,
-	// 		category_id: Number(category),
-	// 	})
-	// 	.eq("id", id);
-	// if (error) {
-	// 	throw error;
-	// }
-	// return data;
+export const editPost = action(createPostSchema, async (input) => {
+	const { title, content, description, category, post_id } = input;
+
+	const { data, error } = await supabase
+		.from("posts")
+		.update({
+			title,
+			content,
+			description,
+			category_id: Number(category),
+		})
+		.eq("id", post_id!);
+	if (error) {
+		throw error;
+	}
+	revalidatePath("/my-posts");
+	return data;
 });
+
+export const isLoggedUserAllowed = async (user_id: string, post_id: string) => {
+	const { data, error } = await supabase
+		.from("posts")
+		.select("author_id, title, content, description, category_id, id")
+		.eq("id", post_id)
+		.single();
+
+	return {
+		allowed: error ? false : data?.author_id === user_id,
+		post: data as Post<null>,
+	};
+};

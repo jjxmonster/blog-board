@@ -17,6 +17,7 @@ export const createPostValidationObject = {
 	content: z.string().min(10, {
 		message: "Content must be at least 10 characters.",
 	}),
+	post_id: z.number().optional(),
 } as const;
 
 export const createPostSchema = z.object(createPostValidationObject);
