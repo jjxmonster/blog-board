@@ -1,6 +1,7 @@
 import { getCategories } from "@/actions/categories";
+import { addPost } from "@/actions/post";
 import { useProtectedRoute } from "@/hooks/protected-route";
-import { CreatePostFormContainer } from "@/views/create-post-container";
+import { CreateEditPostFormContainer } from "@/views/create-edit-post-container";
 import {
 	HydrationBoundary,
 	QueryClient,
@@ -18,7 +19,7 @@ export default async function CreatePost() {
 	return (
 		<section>
 			<HydrationBoundary state={dehydrate(queryClient)}>
-				<CreatePostFormContainer />
+				<CreateEditPostFormContainer isEdit={false} action={addPost} />
 			</HydrationBoundary>
 		</section>
 	);

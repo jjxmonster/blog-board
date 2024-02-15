@@ -1,7 +1,7 @@
-import { isLoggedUserAllowed } from "@/actions/post";
+import { editPost, isLoggedUserAllowed } from "@/actions/post";
 import { useProtectedRoute } from "@/hooks/protected-route";
 import { authOptions } from "@/lib/auth-config";
-import { EditPostFormContainer } from "@/views/edit-post-container";
+import { CreateEditPostFormContainer } from "@/views/create-edit-post-container";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
@@ -21,7 +21,7 @@ export default async function EditPostPage({
 
 	return (
 		<section>
-			<EditPostFormContainer data={data.post} />
+			<CreateEditPostFormContainer isEdit action={editPost} post={data.post} />
 		</section>
 	);
 }
