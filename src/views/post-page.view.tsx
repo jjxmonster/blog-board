@@ -4,6 +4,8 @@ import type { CategoryRelation, Post, ProfilesRelation } from "@/types/common";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CommentsContainer } from "./comments-container";
+import { Suspense } from "react";
+import { LoadingIndicator } from "@/components/ui/loading-indicator";
 
 interface PostPageViewProps {
 	post: Post<CategoryRelation & ProfilesRelation>;
@@ -28,7 +30,9 @@ export const PostPageView = async ({ post }: PostPageViewProps) => {
 			<article className="prose prose-invert max-w-none">
 				<MDXRemote source={content} />
 			</article>
-			<CommentsContainer id={post.id} />
+			<Suspense fallback={<LoadingIndicator />}>
+				<CommentsContainer id={post.id} />
+			</Suspense>
 		</section>
 	);
 };

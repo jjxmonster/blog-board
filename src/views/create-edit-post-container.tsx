@@ -75,7 +75,7 @@ export const CreateEditPostFormContainer = ({
 	}
 
 	return (
-		<div className="grid grid-cols-1 px-6 md:grid-cols-2">
+		<div className="grid grid-cols-1 px-6 md:grid-cols-2 md:px-0">
 			<div>
 				<h1 className="text-4xl font-medium">
 					{isEdit ? "Edit" : "Create"} Post
