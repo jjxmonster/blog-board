@@ -43,6 +43,7 @@ Check out the live demo of the application: [Live Demo](https://blog-board.verce
 - Using Server Actions with Next Safe Action
 - Creating a Trigger in Supabase PostgreSQL Database
 - Generating Database Type using Supabase CLI
+- Using Partial Prerendering
 
 ## Screenshots
 
